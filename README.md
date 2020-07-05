@@ -39,11 +39,10 @@ Throughout the module, we have created following tables (csv files):
 - birth date from 1952-1955 and hired from 1985 to 1988
 - new table: [retirement_info](https://github.com/chrissycho/Pewlett-Hackard-Analysis/blob/master/Data/retirement_info.csv)
 
-2)	Current Employees who will be leaving (already filtered with bday & hiring date)
+2)	Current Employees who will be leaving (already filtered with bday & hiring date) 
 - join retirement_info and dept_employees 
 - add conditional statement de.to_date = (‘9999-01-01’) to select those who are still working 
 - new table: [current_emp](https://github.com/chrissycho/Pewlett-Hackard-Analysis/blob/master/Data/current_emp.csv)
-- <a name="cur"></a>
 
 3)	Employee by departments (how many are leaving by each dept)
 - new table current_emp and dept_employees
@@ -92,12 +91,14 @@ Based on the module, we performed two additional analyses: 1) Number of Retiring
 We were instructed to find employees who were born between 1952-1955, grouped by job title. 
 We wanted employee number, first & last name, title, from_date, and salary in a table. 
 Since we already screened out employees who are eligible for retirement during the module. We will select columns from 
-[current_emp table](#cur). 
+current_emp table (see #2 above). 
 
 - Number of Retiring Employees by Title
     - [emp_title](https://github.com/chrissycho/Pewlett-Hackard-Analysis/blob/master/Challenge/emp_title.csv)
-    - 
-
+    - We selected employee number, first and last name from current_emp table, title and from_date from title table, and salary from the salary table.
+    - We joined current_emp table with titles table and salaries table. 
+  ![](upload/WeatherPy_travel_map.png)
+One problem we noticed with the emp_title table is that we had duplicates of employee number because they might have changed their titles in between. Thus, we had to perform a query to partition the data to show only most recent title per employee. 
 - Most recent title per retiring employee
     - [rent_ti](https://github.com/chrissycho/Pewlett-Hackard-Analysis/blob/master/Challenge/recent_ti.csv)
 - Number of retirees by each title (Only accounted for recent title)
