@@ -30,8 +30,11 @@ for a hypothetical company, "Pewlett-Hackard."
 <a name="sum"></a>
 ## Summary
 By using Quick Database Diagram tools, we were able to identify entity relationships and create entity relationship diagrams (ERDs or schemas). 
+### ERD
+![](master/EmployeeDBD.png)
 There are three parts of ERD: 1) conceptual diagram (the simplest form with table name and column headers), 2) logical form (conceptual diagram plus data types, primary and foreign keys), 3) physical form (physical relationships between tables). Based on the entity relationships, we can then create
 tables with actual data in the postgresql and pgAdmin. On pgAdmin, we will be able to input queries to create a database to hold information of our interest. 
+
 
 Throughout the module, we have created following tables (csv files):
 
@@ -97,8 +100,9 @@ current_emp table (see #2 above).
     - [emp_title](https://github.com/chrissycho/Pewlett-Hackard-Analysis/blob/master/Challenge/emp_title.csv)
     - We selected employee number, first and last name from current_emp table, title and from_date from title table, and salary from the salary table.
     - We joined current_emp table with titles table and salaries table. 
-  ![](upload/WeatherPy_travel_map.png)
-One problem we noticed with the emp_title table is that we had duplicates of employee number because they might have changed their titles in between. Thus, we had to perform a query to partition the data to show only most recent title per employee. 
+  ![](Table%20pictures/emp_title.png) ![](Table%20pictures/emp_title%20pic.png)
+    - One problem we noticed with the emp_title table is that we had duplicates of employee number because they might have changed their titles in between. Thus, we had to perform a query to partition the data to show only most recent title per employee. 
+
 - Most recent title per retiring employee
     - [rent_ti](https://github.com/chrissycho/Pewlett-Hackard-Analysis/blob/master/Challenge/recent_ti.csv)
 - Number of retirees by each title (Only accounted for recent title)
