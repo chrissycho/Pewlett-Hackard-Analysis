@@ -1,5 +1,8 @@
 # Chrissy Cho's Pewlett-Hackard-Analysis
+### Table of Contents
+[ Project Overview. ](#desc)
 
+<a name="desc"></a>
 ## Project Overview
 In this module, we learned to explore databases with SQL. Throughout the module, we learned to build
 an employee database with SQL by applying data modeling, engineering, and analysis. For data modeling, we created
