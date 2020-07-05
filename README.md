@@ -1,8 +1,14 @@
 # Chrissy Cho's Pewlett-Hackard-Analysis
 
 ## Project Overview
+In this module, we learned to explore databases with SQL. Throughout the module, we learned to build
+an employee database with SQL by applying data modeling, engineering, and analysis. For data modeling, we created
+entity relationship diagrams (ERDs). For data engineering, we created a database in Postgresql using GUI(pgAdmin), where we imported data and organized them into tables. We then created queries to perform analysis to determine specific conditions
+for a hypothetical company, "Pewlett-Hackard." 
 
 ## Resources
+- Data Source: [departments.csv](https://github.com/chrissycho/Pewlett-Hackard-Analysis/blob/master/Data/departments.csv), dept_emp.csv, dept_manager.csv, employees.csv, salaries.csv, titles.csv
+- Software: Postgres version 12.3, pgAdmin (https://www.postgresql.org/ftp/pgadmin/pgadmin4/v4.23/macos/)
 
 ## Objectives
 
