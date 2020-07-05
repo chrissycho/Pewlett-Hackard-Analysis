@@ -1,11 +1,11 @@
 # Chrissy Cho's Pewlett-Hackard-Analysis
 ### Table of Contents
-[ 1. Project Overview ](#desc)
-[ 2. Resources ](#resc)
-[ 3. Objectives ](#obj)
-[ 4. Summary ](#sum)
-[ 5. Challenge Overview ](#chal)
-[ 6. Challenge Summary ](#chalsum)
+[ 1. Project Overview ](#desc)<br /> 
+[ 2. Resources ](#resc)<br /> 
+[ 3. Objectives ](#obj)<br /> 
+[ 4. Summary ](#sum)<br /> 
+[ 5. Challenge Overview ](#chal)<br /> 
+[ 6. Challenge Summary ](#chalsum)<br /> 
 
 
 <a name="desc"></a>
@@ -17,26 +17,98 @@ for a hypothetical company, "Pewlett-Hackard."
 
 <a name="resc"></a>
 ## Resources
-- Data Source: [departments.csv](https://github.com/chrissycho/Pewlett-Hackard-Analysis/blob/master/Data/departments.csv), dept_emp.csv, dept_manager.csv, employees.csv, salaries.csv, titles.csv
-- Software: Postgres version 12.3, pgAdmin (https://www.postgresql.org/ftp/pgadmin/pgadmin4/v4.23/macos/)
+- Data Source: [departments.csv](https://github.com/chrissycho/Pewlett-Hackard-Analysis/blob/master/Data/departments.csv), [dept_emp.csv](https://github.com/chrissycho/Pewlett-Hackard-Analysis/blob/master/Data/dept_emp.csv), [dept_manager.csv](https://github.com/chrissycho/Pewlett-Hackard-Analysis/blob/master/Data/dept_manager.csv), [employees.csv](https://github.com/chrissycho/Pewlett-Hackard-Analysis/blob/master/Data/employees.csv), [salaries.csv](https://github.com/chrissycho/Pewlett-Hackard-Analysis/blob/master/Data/salaries.csv), [titles.csv](https://github.com/chrissycho/Pewlett-Hackard-Analysis/blob/master/Data/titles.csv)
+- Software: [PostgreSQL version 12.3](https://www.enterprisedb.com/downloads/postgres-postgresql-downloads), [pgAdmin](https://www.postgresql.org/ftp/pgadmin/pgadmin4/v4.23/macos/)
+- More Information: [PostgreSQL documnetation](https://www.postgresql.org/docs/manuals/), [pgAdmin documentation](https://www.pgadmin.org/docs/)
 
 <a name="obj"></a>
 ## Objectives
+- Data Modeling: identify data relationships, determine entity relationships, create ERDs using [Quick Database Diagram tools](https://www.quickdatabasediagrams.com/)
+- Data Engineering: create a database, create tables in SQL, import data, troubleshoot imports (errors)
+- Data Analysis: perform conditional queries, join the tables, use count, groupby, and orderby, create additional lists, create a tailored list
 
 <a name="sum"></a>
 ## Summary
+By using Quick Database Diagram tools, we were able to identify entity relationships and create entity relationship diagrams (ERDs or schemas). 
+There are three parts of ERD: 1) conceptual diagram (the simplest form with table name and column headers), 2) logical form (conceptual diagram plus data types, primary and foreign keys), 3) physical form (physical relationships between tables). Based on the entity relationships, we can then create
+tables with actual data in the postgresql and pgAdmin. On pgAdmin, we will be able to input queries to create a database to hold information of our interest. 
+
+Throughout the module, we have created following tables (csv files):
+
+1)	Retirement eligible screening 
+-birth date from 1952-1955 and hired from 1985 to 1988
+-new table: [retirement_info](https://github.com/chrissycho/Pewlett-Hackard-Analysis/blob/master/Data/retirement_info.csv)
+
+<a name="cur"></a>
+2)	Current Employees who will be leaving (already filtered with bday & hiring date)
+-join retirement_info and dept_employees 
+-add conditional statement de.to_date = (‘9999-01-01’) to select those who are still working 
+-new table: [current_emp](https://github.com/chrissycho/Pewlett-Hackard-Analysis/blob/master/Data/current_emp.csv)
+
+3)	Employee by departments (how many are leaving by each dept)
+-new table current_emp and dept_employees
+-group by de.dept_no and order by de.dept_no
+-new table: [emp_ri](https://github.com/chrissycho/Pewlett-Hackard-Analysis/blob/master/Data/emp_ri.csv)
+
+4)	Employee info who’s leaving
+-join employees, salaries, dept_employees
+-emp_no, names, gender (all from employees table), salary (from salary table), to_date (dept_employees) 
+-Conditional statements on e.birth_date, e.hire_date and de.to_date
+(Using WHERE, BETWEEN, AND) 
+-new table: [emp_info](https://github.com/chrissycho/Pewlett-Hackard-Analysis/blob/master/Data/emp_info.csv)
+
+5)	Managers info who’s leaving from each department
+-join dept_manager, departments, current_emp tables
+-dept_no (with dept_manager & departments) 
+-emp_no (with dept_manager & current_emp)
+-new table: [manager_info](https://github.com/chrissycho/Pewlett-Hackard-Analysis/blob/master/Data/manager_info.csv)
+
+6)	Department Retirees
+-who are leaving and what department
+-join current_emp, dept_emp, departments
+-join departments with de.dept_no = d.dept_no while ce.emp)no = de.emp_no
+-Will see some emp. appearing twice
+-new table: [dept_info](https://github.com/chrissycho/Pewlett-Hackard-Analysis/blob/master/Data/dept_info.csv)
+
+7)	Sales department retirees
+-join current_emp, dept_emp, departments
+-condition where de.dept_no. = ‘d007’ will return Sales department only with the current employees who are eligible for retirement 
+-new table: [sales_info](https://github.com/chrissycho/Pewlett-Hackard-Analysis/blob/master/Data/sales_info.csv)
+
+8)	Retirees from both Sales & Department
+-join current_emp, dept_employees, departments (d)
+-join ce.emp_no & de.emp_no; de.dept_no & d.dept_no 
+-new table: [emp_sales_dept](https://github.com/chrissycho/Pewlett-Hackard-Analysis/blob/master/Data/emp_sales_dept.csv)
+
+9) Number of Retiring Employees by Titles
+-new table: emp_title
+-new table for count: [emp_title_number]()
+
+10)	Most recent title per retiring employee
+-new table: rent_ti
 
 <a name="chal"></a>
 ## Challenge Overview
+Based on the module, we performed two additional analyses: 1) Number of Retiring Employees by Title, 2) Mentorship Eligibility.
+
+
 
 <a name="chalsum"></a>
 ## Challenge Summary
 1. Technical Analysis Deliverable 1:
 - Number of Retiring Employees by Title
-- Recent
-2. Most Recent Titles
+    - [emp_title](https://github.com/chrissycho/Pewlett-Hackard-Analysis/blob/master/Challenge/emp_title.csv)
+We were instructed to find employees who were born between 1952-1955, grouped by job title. 
+We wanted employee number, first & last name, title, from_date, and salary in a table. 
+Since we already screened out employees who are eligible for retirement during the module. We will select columns from 
+[current_emp table](#cur). 
 
-3. 
+- Most recent title per retiring employee
+    - [rent_ti](https://github.com/chrissycho/Pewlett-Hackard-Analysis/blob/master/Challenge/recent_ti.csv)
+- Number of retirees by each title (Only accounted for recent title)
+    - [emp_title_number](https://github.com/chrissycho/Pewlett-Hackard-Analysis/blob/master/Challenge/emp_title_number.csv)
+
+2.  
 
 
 
@@ -44,12 +116,9 @@ for a hypothetical company, "Pewlett-Hackard."
 
 
 
-
-
-
-
-two additional analyses and a technical report to deliver the results to his manager
-
+In your first paragraph, introduce the problem that you were using data to solve.
+In your second paragraph, summarize the steps that you took to solve the problem, as well as the challenges that you encountered along the way. This is an excellent spot to provide examples and descriptions of the code that you used.
+In your final paragraph, share the results of your analysis and discuss the data that you’ve generated. Have you identified any limitations to the analysis? What next steps would you recommend?
 
 
 
