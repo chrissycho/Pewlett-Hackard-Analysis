@@ -266,3 +266,39 @@ inner join salaries as s
 on (ce.emp_no = s.emp_no);
 
 select * from emp_title
+
+select count(ce.emp_no), ti.title
+INTO emp_title_number
+from current_emp as ce
+inner join titles as ti
+on (ce.emp_no = ti.emp_no)
+inner join salaries as s
+on (ce.emp_no = s.emp_no)
+group by ti.title;
+
+select * from emp_title_number
+-- Partition the data to show only most recent title per employee
+SELECT emp_no,
+ first_name,
+ last_name,
+ title,
+ from_date,
+ salary
+INTO recent_ti
+FROM
+ (SELECT emp_no,
+first_name,
+last_name,
+title,
+from_date,
+salary, ROW_NUMBER() OVER
+ (PARTITION BY (emp_no)
+ ORDER BY from_date DESC) rn
+ FROM emp_title
+ ) tmp WHERE rn = 1
+ORDER BY emp_no;
+
+select * from recent_ti
+
+
+
