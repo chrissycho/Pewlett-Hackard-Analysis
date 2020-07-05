@@ -1,6 +1,12 @@
 # Chrissy Cho's Pewlett-Hackard-Analysis
 ### Table of Contents
-[ Project Overview. ](#desc)
+[ 1. Project Overview ](#desc)
+[ 2. Resources ](#resc)
+[ 3. Objectives ](#obj)
+[ 4. Summary ](#sum)
+[ 5. Challenge Overview ](#chal)
+[ 6. Challenge Summary ](#chalsum)
+
 
 <a name="desc"></a>
 ## Project Overview
@@ -9,16 +15,21 @@ an employee database with SQL by applying data modeling, engineering, and analys
 entity relationship diagrams (ERDs). For data engineering, we created a database in Postgresql using GUI(pgAdmin), where we imported data and organized them into tables. We then created queries to perform analysis to determine specific conditions
 for a hypothetical company, "Pewlett-Hackard." 
 
+<a name="resc"></a>
 ## Resources
 - Data Source: [departments.csv](https://github.com/chrissycho/Pewlett-Hackard-Analysis/blob/master/Data/departments.csv), dept_emp.csv, dept_manager.csv, employees.csv, salaries.csv, titles.csv
 - Software: Postgres version 12.3, pgAdmin (https://www.postgresql.org/ftp/pgadmin/pgadmin4/v4.23/macos/)
 
+<a name="obj"></a>
 ## Objectives
 
+<a name="sum"></a>
 ## Summary
 
+<a name="chal"></a>
 ## Challenge Overview
 
+<a name="chalsum"></a>
 ## Challenge Summary
 1. Technical Analysis Deliverable 1:
 - Number of Retiring Employees by Title
