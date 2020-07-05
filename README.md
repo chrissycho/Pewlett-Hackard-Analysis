@@ -36,56 +36,49 @@ tables with actual data in the postgresql and pgAdmin. On pgAdmin, we will be ab
 Throughout the module, we have created following tables (csv files):
 
 1)	Retirement eligible screening 
--birth date from 1952-1955 and hired from 1985 to 1988
--new table: [retirement_info](https://github.com/chrissycho/Pewlett-Hackard-Analysis/blob/master/Data/retirement_info.csv)
+- birth date from 1952-1955 and hired from 1985 to 1988
+- new table: [retirement_info](https://github.com/chrissycho/Pewlett-Hackard-Analysis/blob/master/Data/retirement_info.csv)
 
-<a name="cur"></a>
 2)	Current Employees who will be leaving (already filtered with bday & hiring date)
--join retirement_info and dept_employees 
--add conditional statement de.to_date = (‘9999-01-01’) to select those who are still working 
--new table: [current_emp](https://github.com/chrissycho/Pewlett-Hackard-Analysis/blob/master/Data/current_emp.csv)
+- join retirement_info and dept_employees 
+- add conditional statement de.to_date = (‘9999-01-01’) to select those who are still working 
+- new table: [current_emp](https://github.com/chrissycho/Pewlett-Hackard-Analysis/blob/master/Data/current_emp.csv)
+- <a name="cur"></a>
 
 3)	Employee by departments (how many are leaving by each dept)
--new table current_emp and dept_employees
--group by de.dept_no and order by de.dept_no
--new table: [emp_ri](https://github.com/chrissycho/Pewlett-Hackard-Analysis/blob/master/Data/emp_ri.csv)
+- new table current_emp and dept_employees
+- group by de.dept_no and order by de.dept_no
+- new table: [emp_ri](https://github.com/chrissycho/Pewlett-Hackard-Analysis/blob/master/Data/emp_ri.csv)
 
 4)	Employee info who’s leaving
--join employees, salaries, dept_employees
--emp_no, names, gender (all from employees table), salary (from salary table), to_date (dept_employees) 
--Conditional statements on e.birth_date, e.hire_date and de.to_date
+- join employees, salaries, dept_employees
+- emp_no, names, gender (all from employees table), salary (from salary table), to_date (dept_employees) 
+- Conditional statements on e.birth_date, e.hire_date and de.to_date
 (Using WHERE, BETWEEN, AND) 
--new table: [emp_info](https://github.com/chrissycho/Pewlett-Hackard-Analysis/blob/master/Data/emp_info.csv)
+- new table: [emp_info](https://github.com/chrissycho/Pewlett-Hackard-Analysis/blob/master/Data/emp_info.csv)
 
 5)	Managers info who’s leaving from each department
--join dept_manager, departments, current_emp tables
--dept_no (with dept_manager & departments) 
--emp_no (with dept_manager & current_emp)
--new table: [manager_info](https://github.com/chrissycho/Pewlett-Hackard-Analysis/blob/master/Data/manager_info.csv)
+- join dept_manager, departments, current_emp tables
+- dept_no (with dept_manager & departments) 
+- emp_no (with dept_manager & current_emp)
+- new table: [manager_info](https://github.com/chrissycho/Pewlett-Hackard-Analysis/blob/master/Data/manager_info.csv)
 
 6)	Department Retirees
--who are leaving and what department
--join current_emp, dept_emp, departments
--join departments with de.dept_no = d.dept_no while ce.emp)no = de.emp_no
--Will see some emp. appearing twice
--new table: [dept_info](https://github.com/chrissycho/Pewlett-Hackard-Analysis/blob/master/Data/dept_info.csv)
+- who are leaving and what department
+- join current_emp, dept_emp, departments
+- join departments with de.dept_no = d.dept_no while ce.emp)no = de.emp_no
+- Will see some emp. appearing twice
+- new table: [dept_info](https://github.com/chrissycho/Pewlett-Hackard-Analysis/blob/master/Data/dept_info.csv)
 
 7)	Sales department retirees
--join current_emp, dept_emp, departments
--condition where de.dept_no. = ‘d007’ will return Sales department only with the current employees who are eligible for retirement 
--new table: [sales_info](https://github.com/chrissycho/Pewlett-Hackard-Analysis/blob/master/Data/sales_info.csv)
+- join current_emp, dept_emp, departments
+- condition where de.dept_no. = ‘d007’ will return Sales department only with the current employees who are eligible for retirement 
+- new table: [sales_info](https://github.com/chrissycho/Pewlett-Hackard-Analysis/blob/master/Data/sales_info.csv)
 
 8)	Retirees from both Sales & Department
--join current_emp, dept_employees, departments (d)
--join ce.emp_no & de.emp_no; de.dept_no & d.dept_no 
--new table: [emp_sales_dept](https://github.com/chrissycho/Pewlett-Hackard-Analysis/blob/master/Data/emp_sales_dept.csv)
-
-9) Number of Retiring Employees by Titles
--new table: emp_title
--new table for count: [emp_title_number]()
-
-10)	Most recent title per retiring employee
--new table: rent_ti
+- join current_emp, dept_employees, departments (d)
+- join ce.emp_no & de.emp_no; de.dept_no & d.dept_no 
+- new table: [emp_sales_dept](https://github.com/chrissycho/Pewlett-Hackard-Analysis/blob/master/Data/emp_sales_dept.csv)
 
 <a name="chal"></a>
 ## Challenge Overview
@@ -96,12 +89,14 @@ Based on the module, we performed two additional analyses: 1) Number of Retiring
 <a name="chalsum"></a>
 ## Challenge Summary
 1. Technical Analysis Deliverable 1:
-- Number of Retiring Employees by Title
-    - [emp_title](https://github.com/chrissycho/Pewlett-Hackard-Analysis/blob/master/Challenge/emp_title.csv)
 We were instructed to find employees who were born between 1952-1955, grouped by job title. 
 We wanted employee number, first & last name, title, from_date, and salary in a table. 
 Since we already screened out employees who are eligible for retirement during the module. We will select columns from 
 [current_emp table](#cur). 
+
+- Number of Retiring Employees by Title
+    - [emp_title](https://github.com/chrissycho/Pewlett-Hackard-Analysis/blob/master/Challenge/emp_title.csv)
+    - 
 
 - Most recent title per retiring employee
     - [rent_ti](https://github.com/chrissycho/Pewlett-Hackard-Analysis/blob/master/Challenge/recent_ti.csv)
