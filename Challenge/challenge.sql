@@ -236,11 +236,12 @@ on (de.dept_no = d.dept_no)
 Where de.dept_no = 'd007'
 
 --retirees in both Sales & Department
+
 select ce.emp_no,
 ce.first_name,
 ce.last_name,
 d.dept_name
-INTO emp_mentor
+INTO emp_sales_dept
 from current_emp as ce
 inner join dept_employees as de
 on (ce.emp_no = de.emp_no)
@@ -248,7 +249,7 @@ inner join departments as d
 on (de.dept_no = d.dept_no)
 Where de.dept_no IN ('d005','d007')
 
-select * from emp_mentor
+select * from emp_sales_dept
 
 --Number of Retiring Employees by Titles
 drop table emp_title
@@ -267,16 +268,6 @@ on (ce.emp_no = s.emp_no);
 
 select * from emp_title
 
-select count(ce.emp_no), ti.title
-INTO emp_title_number
-from current_emp as ce
-inner join titles as ti
-on (ce.emp_no = ti.emp_no)
-inner join salaries as s
-on (ce.emp_no = s.emp_no)
-group by ti.title;
-
-select * from emp_title_number
 -- Partition the data to show only most recent title per employee
 SELECT emp_no,
  first_name,
@@ -300,5 +291,29 @@ ORDER BY emp_no;
 
 select * from recent_ti
 
+drop table emp_title_number
+SELECT count(emp_no), title
+INTO emp_title_number
+from recent_ti
+GROUP BY title
 
+select * from emp_title_number
+
+--Mentorship Eligibility
+SELECT e.emp_no,
+	e.first_name,
+	e.last_name,
+	ti.title,
+	ti.from_date,
+	ti.to_date
+INTO emp_mentorship
+FROM employees as e
+INNER JOIN titles as ti
+ON (e.emp_no = ti.emp_no)
+INNER JOIN dept_employees as de
+ON (e.emp_no = de.emp_no)
+WHERE (e.birth_date BETWEEN '1965-01-01' AND '1965-12-31')
+	 AND (de.to_date = '9999-01-01');
+
+select * from emp_mentorship
 
