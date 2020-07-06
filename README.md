@@ -90,6 +90,7 @@ Based on the module, we performed two additional analyses: 1) Number of Retiring
 
 <a name="chalsum"></a>
 ## Challenge Summary
+[challenge quries](https://github.com/chrissycho/Pewlett-Hackard-Analysis/blob/master/Challenge/challenge.sql)
 1. Technical Analysis Deliverable 1:
 We were instructed to find employees who were born between 1952-1955, grouped by job title. 
 We wanted employee number, first & last name, title, from_date, and salary in a table. 
@@ -119,16 +120,15 @@ For the second additional analysis, we were instructed to find out employees who
 - Employees who are eligible for mentorship program
     - To create a table for these employees, we used two inner joins. We printed employee number, first & last name, their titles and from_date and to_date of their employment. 
     - We joined employees table with dept_employees and titles tables, making conditional statements on their birth date and their current employment (to_date).
-    ![](Table%20pictures/mentorship_newquery.png) ![](Table%20pictures/mentorship_newquery_pic.png)
+    ![](Table%20pictures/mentorship_newquery.png) 
+    ### result
+    ![](Table%20pictures/mentorship_newquery_pic.png)
     - [emp_mentorship](https://github.com/chrissycho/Pewlett-Hackard-Analysis/blob/master/Challenge/emp_mentorship.csv)
+    - However, this table has duplicates of employees not accounting for the recent title. Therefore, I had to perform another pertition to have recent titles only. 
+    ![](Table%20pictures/partition_mentorship.png) 
+    ### result
+    ![](Table%20pictures/partition_mentorship_pic.png)
 
 
 3. Limitation of the analyses:
-Throughout the challenge, there were couple of things I wanted clarifications on. First, the instruction didn't specify whether we need to define the hire date but I included the hire date because it's a part of retirement eligibility (based on the module) by using current_emp table. Second, we could use the title's to_date by joining one table instead of two tables (dept_employee table and titles' table) in the deliverable 2. 
-
-
-
-In your first paragraph, introduce the problem that you were using data to solve.
-In your second paragraph, summarize the steps that you took to solve the problem, as well as the challenges that you encountered along the way. This is an excellent spot to provide examples and descriptions of the code that you used.
-In your final paragraph, share the results of your analysis and discuss the data that you’ve generated. Have you identified any limitations to the analysis? What next steps would you recommend?
-
+Throughout the challenge, there were a couple of things I wanted clarifications on. First, the instruction didn't specify whether we need to define the hire date, but I included the hire date because it's a part of retirement eligibility (based on the module) by using the current_emp table. Second, we could use the title's to_date by joining one table instead of two tables (dept_employee table and titles' table) in deliverable 2. We removed the duplicates in the third table by partitioning the table. 
