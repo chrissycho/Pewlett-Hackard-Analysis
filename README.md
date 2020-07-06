@@ -125,7 +125,8 @@ For the second additional analysis, we were instructed to find out employees who
     ### result
     ![](Table%20pictures/mentorship_newquery_pic.png)
     - [emp_mentorship](https://github.com/chrissycho/Pewlett-Hackard-Analysis/blob/master/Challenge/emp_mentorship.csv)
-    - However, this table has duplicates of employees not accounting for the recent title. Therefore, I had to perform another pertition to have recent titles only. 
+    - However, this table has duplicates of employees not accounting for the recent title. Therefore, I had to perform another pertition to have recent titles only.
+     
     ![](Table%20pictures/partition_mentorship.png) 
     ### result
     ![](Table%20pictures/partition_mentorship_pic.png)
