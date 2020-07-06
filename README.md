@@ -93,8 +93,7 @@ Based on the module, we performed two additional analyses: 1) Number of Retiring
 1. Technical Analysis Deliverable 1:
 We were instructed to find employees who were born between 1952-1955, grouped by job title. 
 We wanted employee number, first & last name, title, from_date, and salary in a table. 
-Since we already screened out employees who are eligible for retirement during the module. We will select columns from 
-current_emp table (see #2 above). 
+Since we already screened out employees who are eligible for retirement during the module. We will select columns from the current_emp table (see #2 above). 
 
 - Number of Retiring Employees by Title
     - [emp_title](https://github.com/chrissycho/Pewlett-Hackard-Analysis/blob/master/Challenge/emp_title.csv)
@@ -116,15 +115,16 @@ current_emp table (see #2 above).
     - [emp_title_number](https://github.com/chrissycho/Pewlett-Hackard-Analysis/blob/master/Challenge/emp_title_number.csv)
 
 2.  Technical Analysis Deliverable 2:
-For the second additional analysis, we were instructed to find out employees who are eligible to participate in the mentorship program. The age criteria was from Jan 1. 1965 to Dec. 31 1965. 
+For the second additional analysis, we were instructed to find out employees who are eligible to participate in the mentorship program. The age criteria was from Jan. 1, 1965 to Dec. 31, 1965. 
 - Employees who are eligible for mentorship program
     - To create a table for these employees, we used two inner joins. We printed employee number, first & last name, their titles and from_date and to_date of their employment. 
     - We joined employees table with dept_employees and titles tables, making conditional statements on their birth date and their current employment (to_date).
+    ![](Table%20pictures/mentorship_newquery.png) ![](Table%20pictures/mentorship_newquery_pic.png)
+    - [emp_mentorship](https://github.com/chrissycho/Pewlett-Hackard-Analysis/blob/master/Challenge/emp_mentorship.csv)
 
 
-
-
-
+3. Limitation of the analyses:
+Throughout the challenge, there were couple of things I wanted clarifications on. First, the instruction didn't specify whether we need to define the hire date but I included the hire date because it's a part of retirement eligibility (based on the module) by using current_emp table. Second, we could use the title's to_date by joining one table instead of two tables (dept_employee table and titles' table) in the deliverable 2. 
 
 
 

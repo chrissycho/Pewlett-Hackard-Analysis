@@ -300,13 +300,14 @@ GROUP BY title
 select * from emp_title_number
 
 --Mentorship Eligibility
+drop table emp_mentorship
 SELECT e.emp_no,
 	e.first_name,
 	e.last_name,
 	ti.title,
 	ti.from_date,
-	ti.to_date
-INTO emp_mentorship
+	de.to_date
+-- INTO emp_mentorship
 FROM employees as e
 INNER JOIN titles as ti
 ON (e.emp_no = ti.emp_no)
@@ -315,5 +316,26 @@ ON (e.emp_no = de.emp_no)
 WHERE (e.birth_date BETWEEN '1965-01-01' AND '1965-12-31')
 	 AND (de.to_date = '9999-01-01');
 
-select * from emp_mentorship
+select count(emp_no) from emp_mentorship
 
+--Partitioning the mentorship
+drop table partition_emp_mentorship
+SELECT emp_no,
+	first_name,
+	last_name,
+	title,
+	from_date
+INTO partition_emp_mentorship
+FROM
+  (SELECT emp_no,
+	first_name,
+	last_name,
+	title,
+	from_date,
+	ROW_NUMBER() OVER
+(PARTITION BY (emp_no) ORDER BY from_date DESC) rn
+   FROM emp_mentorship
+  ) tmp WHERE rn = 1
+order by emp_no;
+
+select * from partition_emp_mentorship
