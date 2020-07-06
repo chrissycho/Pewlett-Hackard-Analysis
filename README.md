@@ -31,7 +31,7 @@ for a hypothetical company, "Pewlett-Hackard."
 ## Summary
 By using Quick Database Diagram tools, we were able to identify entity relationships and create entity relationship diagrams (ERDs or schemas). 
 ### ERD
-![](master/EmployeeDBD.png)
+![](EmployeeDBD.png)
 There are three parts of ERD: 1) conceptual diagram (the simplest form with table name and column headers), 2) logical form (conceptual diagram plus data types, primary and foreign keys), 3) physical form (physical relationships between tables). Based on the entity relationships, we can then create
 tables with actual data in the postgresql and pgAdmin. On pgAdmin, we will be able to input queries to create a database to hold information of our interest. 
 
@@ -115,7 +115,12 @@ current_emp table (see #2 above).
      ![](Table%20pictures/recent_title_number.png) ![](Table%20pictures/recent_title_number_pic.png)
     - [emp_title_number](https://github.com/chrissycho/Pewlett-Hackard-Analysis/blob/master/Challenge/emp_title_number.csv)
 
-2.  
+2.  Technical Analysis Deliverable 2:
+For the second additional analysis, we were instructed to find out employees who are eligible to participate in the mentorship program. The age criteria was from Jan 1. 1965 to Dec. 31 1965. 
+- Employees who are eligible for mentorship program
+    - To create a table for these employees, we used two inner joins. We printed employee number, first & last name, their titles and from_date and to_date of their employment. 
+    - We joined employees table with dept_employees and titles tables, making conditional statements on their birth date and their current employment (to_date).
+
 
 
 
