@@ -91,7 +91,7 @@ Based on the module, we performed two additional analyses: 1) Number of Retiring
 
 <a name="chalsum"></a>
 ## Challenge Summary
-[challenge quries](https://github.com/chrissycho/Pewlett-Hackard-Analysis/blob/master/Challenge/challenge.sql)
+Query reference: [challenge queries](https://github.com/chrissycho/Pewlett-Hackard-Analysis/blob/master/Challenge/challenge.sql)
 1. Technical Analysis Deliverable 1:
 We were instructed to find employees who were born between 1952-1955, grouped by job title. 
 We wanted employee number, first & last name, title, from_date, and salary in a table. 
@@ -126,11 +126,11 @@ For the second additional analysis, we were instructed to find out employees who
     ![](Table%20pictures/mentorship_newquery_pic.png)
     - [emp_mentorship](https://github.com/chrissycho/Pewlett-Hackard-Analysis/blob/master/Challenge/emp_mentorship.csv)
     - However, this table has duplicates of employees not accounting for the recent title. Therefore, I had to perform another pertition to have recent titles only.
-     
+
     ![](Table%20pictures/partition_mentorship.png) 
     ### result
     ![](Table%20pictures/partition_mentorship_pic.png)
 
 
 3. Limitation of the analyses:
-Throughout the challenge, there were a couple of things I wanted clarifications on. First, the instruction didn't specify whether we need to define the hire date, but I included the hire date because it's a part of retirement eligibility (based on the module) by using the current_emp table. Second, we could use the title's to_date by joining one table instead of two tables (dept_employee table and titles' table) in deliverable 2. We removed the duplicates in the third table by partitioning the table. 
+Throughout the challenge, there were a couple of things I wanted clarifications on. First, the instruction didn't specify whether we need to define the hire date, but I included the hire date because it's a part of retirement eligibility (based on the module) by using the current_emp table. Second, we could use the title's to_date by joining one table instead of two tables (dept_employee table and titles' table) in deliverable 2. Third, there were duplicates in the list of employees in the mentorship. To tackle the third problem, we removed the duplicates in the third table by partitioning the table and by joining one inner table (titles table) in deliverable 2 seemed to have the same output of 1549 employees as that of partitioning the table instead of the original number of 2382 without partitioning. 
